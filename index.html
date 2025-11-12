@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>BRT - Creative Portfolio</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
   * {
     margin: 0;
@@ -17,17 +21,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    position: relative;
   }
 
   section {
     position: relative;
-    width: 100vw;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
     background-color: transparent;
     border: none;
+    padding: 60px 20px;
   }
 
   #hero {
@@ -51,12 +58,8 @@
   }
 
   @keyframes zoomIn {
-    from {
-      transform: scale(1.1);
-    }
-    to {
-      transform: scale(1);
-    }
+    from { transform: scale(1.1); }
+    to { transform: scale(1); }
   }
 
   .hero-content {
@@ -85,23 +88,13 @@
   }
 
   @keyframes logoFadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   @keyframes logoFloat {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 
   .typewrite {
@@ -115,19 +108,10 @@
     animation: blink 0.7s step-end infinite;
   }
 
-  @keyframes blink {
-    50% { border-color: transparent; }
-  }
-
+  @keyframes blink { 50% { border-color: transparent; } }
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   #img {
@@ -171,7 +155,6 @@
     position: relative;
   }
 
-  /* Top Right Navigation */
   nav {
     position: fixed;
     top: 40px;
@@ -189,17 +172,15 @@
     transition: color 0.3s ease;
   }
 
-  nav a:hover {
-    color: white;
-  }
+  nav a:hover { color: white; }
 
-  /* Tweaking Section Styles */
   .tweaking-content {
     display: flex;
     flex-direction: column;
     gap: 40px;
     width: 100%;
     max-width: 1000px;
+    margin: 0 auto;
   }
 
   .tweaking-section {
@@ -249,9 +230,7 @@
     height: 10px;
   }
 
-  .tweaking-item:hover .tweaking-label {
-    color: #fff;
-  }
+  .tweaking-item:hover .tweaking-label { color: #fff; }
 
   .tweaking-divider {
     width: 100%;
@@ -262,9 +241,7 @@
     transition: all 0.3s ease;
   }
 
-  .tweaking-divider:hover {
-    background-color: #888;
-  }
+  .tweaking-divider:hover { background-color: #888; }
 
   .tweaking-boxes {
     display: grid;
@@ -281,9 +258,7 @@
     cursor: pointer;
   }
 
-  .tweaking-box:hover {
-    background-color: #888;
-  }
+  .tweaking-box:hover { background-color: #888; }
 
   .tweaking-full-box {
     grid-column: 1 / -1;
@@ -306,6 +281,7 @@
     display: flex;
     gap: 40px;
     max-width: 1200px;
+    margin: 0 auto;
   }
 
   footer a {
@@ -316,12 +292,12 @@
     transition: color 0.3s ease;
   }
 
-  footer a:hover {
-    color: white;
-  }
+  footer a:hover { color: white; }
 
   .photos-container {
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
   }
@@ -333,21 +309,12 @@
     animation: scrollLeft 120s linear infinite;
   }
 
-  .photos-row:nth-child(2) {
-    animation: scrollLeft 130s linear infinite reverse;
-  }
-
-  .photos-row:nth-child(3) {
-    animation: scrollLeft 140s linear infinite;
-  }
+  .photos-row:nth-child(2) { animation: scrollLeft 130s linear infinite reverse; }
+  .photos-row:nth-child(3) { animation: scrollLeft 140s linear infinite; }
 
   @keyframes scrollLeft {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
   }
 
   .photo-card {
@@ -384,8 +351,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3), 
-                0 10px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: opacity 0.6s ease;
     z-index: 1;
@@ -397,27 +363,18 @@
     transform: scale(1.08);
   }
 
-  .photo-card:hover img {
-    transform: scale(1.1);
-  }
-
-  .photo-card:hover::before {
-    opacity: 1;
-  }
-
-  .photo-card:hover::after {
-    opacity: 1;
-  }
+  .photo-card:hover img { transform: scale(1.1); }
+  .photo-card:hover::before { opacity: 1; }
+  .photo-card:hover::after { opacity: 1; }
 
   #webgl-container {
     width: 400px;
     height: 400px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+    background-color: transparent !important;
   }
 
-  /* Lightbox Gallery */
   .lightbox {
     display: none;
     position: fixed;
@@ -434,17 +391,11 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .lightbox.active {
-    display: flex;
-  }
+  .lightbox.active { display: flex; }
 
   .lightbox-content {
     position: relative;
@@ -515,13 +466,8 @@
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  .lightbox-prev {
-    left: 20px;
-  }
-
-  .lightbox-next {
-    right: 20px;
-  }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
 
   .lightbox-info {
     position: absolute;
@@ -534,18 +480,24 @@
   }
 
   .dot {
-    position: fixed;
+    position: absolute;
     width: 3px;
     height: 3px;
     background: white;
     opacity: 0.3;
     border-radius: 50%;
     pointer-events: none;
-    transition: transform 0.1s ease-out;
     z-index: 5;
   }
 
-  /* Scrollbar styling */
+  #typedtext {
+    font-size: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -562,11 +514,64 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    section {
+      padding: 40px 15px;
+    }
+    
+    #projects, #tweaking, #img {
+      padding: 40px 20px;
+    }
+    
+    .tweaking-boxes {
+      grid-template-columns: 1fr;
+    }
+    
+    .tweaking-full-box {
+      grid-column: 1;
+    }
+    
+    #typedtext {
+      font-size: 1.2rem;
+      max-width: 100%;
+    }
+    
+    nav {
+      gap: 15px;
+      right: 20px;
+      top: 20px;
+    }
+    
+    nav a {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    section {
+      padding: 30px 10px;
+    }
+    
+    nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    #typedtext {
+      font-size: 1rem;
+    }
+    
+    .photo-card {
+      width: 200px;
+      height: 200px;
+    }
+  }
 </style>
 </head>
 <body>
 
-<!-- Top Right Navigation -->
 <nav>
   <a href="#hero">hero</a>
   <a href="#img">/img</a>
@@ -592,7 +597,7 @@
 </section>
 
 <section id="projects">
-  <div style="font-size: 2rem; text-align: center;">Projects Section</div>
+  <div id="typedtext"></div>
 </section>
 
 <section id="tweaking">
@@ -654,7 +659,6 @@
   </div>
 </footer>
 
-<!-- Lightbox Gallery -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-content">
     <span class="lightbox-close" id="lightbox-close">&times;</span>
@@ -681,20 +685,15 @@
   TxtType.prototype.tick = function() {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
-
     if (this.isDeleting) {
       this.txt = fullTxt.substring(0, this.txt.length - 1);
     } else {
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-
     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
     var that = this;
     var delta = 80 - Math.random() * 60;
-
     if (this.isDeleting) { delta /= 2; }
-
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
       this.isDeleting = true;
@@ -703,10 +702,7 @@
       this.loopNum++;
       delta = 300;
     }
-
-    setTimeout(function() {
-      that.tick();
-    }, delta);
+    setTimeout(function() { that.tick(); }, delta);
   };
 
   function shuffleArray(array) {
@@ -722,29 +718,24 @@
   let currentPhotoIndex = 0;
 
   window.onload = function() {
-    // Create grid dots
     const spacing = 45;
-    const dots = [];
+    let dots = [];
 
     function createDots() {
       const cols = Math.ceil(window.innerWidth / spacing);
-      const rows = Math.ceil(window.innerHeight / spacing);
-
+      const totalHeight = document.documentElement.scrollHeight;
+      const rows = Math.ceil(totalHeight / spacing);
+      
       for (let row = 0; row <= rows; row++) {
         for (let col = 0; col <= cols; col++) {
           const dot = document.createElement("div");
           dot.classList.add("dot");
           document.body.appendChild(dot);
-
+          
           const baseX = col * spacing;
           const baseY = row * spacing;
-
-          dots.push({
-            element: dot,
-            baseX,
-            baseY
-          });
-
+          
+          dots.push({ element: dot, baseX, baseY });
           dot.style.left = baseX + "px";
           dot.style.top = baseY + "px";
         }
@@ -753,35 +744,12 @@
 
     createDots();
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-
-    function animate() {
-      dots.forEach(dot => {
-        const dx = dot.baseX - mouseX;
-        const dy = dot.baseY - mouseY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
-        let repelX = 0, repelY = 0;
-        if (dist < 150 && dist > 0) {
-          repelX = (dx / dist) * (150 - dist) * 0.1;
-          repelY = (dy / dist) * (150 - dist) * 0.1;
-        }
-
-        dot.element.style.transform = `translate(${repelX}px, ${repelY}px)`;
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener("mousemove", e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    window.addEventListener('resize', () => {
+      dots.forEach(dot => dot.element.remove());
+      dots = [];
+      createDots();
     });
 
-    // Fetch creative words
     async function fetchCreativeWords() {
       try {
         const words = [];
@@ -804,7 +772,45 @@
       new TxtType(typewriteEl, words, 2000);
     });
 
-    // Fetch photos
+    // Typewriter animation for Projects section
+    var aText = new Array(
+      "Crafting Digital Experiences",
+      "Building tomorrow's solutions today",
+      "Innovation meets design",
+      "Code that speaks volumes"
+    );
+    var iSpeed = 50;
+    var iIndex = 0;
+    var iArrLength = aText[0].length;
+    var iScrollAt = 20;
+    var iTextPos = 0;
+    var sContents = '';
+    var iRow;
+
+    function typewriter() {
+      sContents = '';
+      iRow = Math.max(0, iIndex - iScrollAt);
+      var destination = document.getElementById("typedtext");
+      
+      while (iRow < iIndex) {
+        sContents += aText[iRow++] + '<br />';
+      }
+      destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "<span style='color: #888;'>_</span>";
+      
+      if (iTextPos++ == iArrLength) {
+        iTextPos = 0;
+        iIndex++;
+        if (iIndex != aText.length) {
+          iArrLength = aText[iIndex].length;
+          setTimeout(typewriter, 500);
+        }
+      } else {
+        setTimeout(typewriter, iSpeed);
+      }
+    }
+
+    setTimeout(typewriter, 500);
+
     const username = 'beratbk';
     const accessKey = 'QdGsxleLkUbuuytPTUt-g5HpOwB_Mg6OEhNHc3GoKGg';
     const url = `https://api.unsplash.com/users/${username}/photos?client_id=${accessKey}&per_page=50`;
@@ -815,35 +821,26 @@
         allPhotos = data;
         const photosContainer = document.getElementById('photos-container');
         const shuffledPhotos = shuffleArray(data);
-        
         const rows = [[], [], []];
-        shuffledPhotos.forEach((photo, index) => {
-          rows[index % 3].push(photo);
-        });
-
+        shuffledPhotos.forEach((photo, index) => { rows[index % 3].push(photo); });
         rows.forEach((rowPhotos) => {
           const rowDiv = document.createElement('div');
           rowDiv.className = 'photos-row';
-          
           rowPhotos.forEach((photo) => {
             const card = document.createElement('div');
             card.className = 'photo-card';
-            
             const img = document.createElement('img');
             img.src = photo.urls.regular;
             img.alt = photo.alt_description || 'Photo';
-            
             card.appendChild(img);
             card.addEventListener('click', () => openLightbox(data.indexOf(photo)));
             rowDiv.appendChild(card);
           });
-          
           photosContainer.appendChild(rowDiv);
         });
       })
       .catch(error => console.error('Error fetching photos:', error));
 
-    // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
@@ -879,10 +876,7 @@
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxNext.addEventListener('click', showNext);
     lightboxPrev.addEventListener('click', showPrev);
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'ArrowRight') showNext();
@@ -890,10 +884,8 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // WebGL Setup
     const canvas = document.getElementById('webgl-container');
     const gl = canvas.getContext('webgl');
-    
     canvas.width = 400;
     canvas.height = 400;
 
@@ -909,7 +901,6 @@
       uniform mat4 view;
       uniform mat4 model;
       varying vec3 vertexColor;
-
       void main() {
         gl_Position = projection * view * model * vec4(position, 1.0);
         vertexColor = color;
@@ -919,7 +910,6 @@
     const fragmentShaderSource = `
       precision mediump float;
       varying vec3 vertexColor;
-
       void main() {
         gl_FragColor = vec4(vertexColor, 1.0);
       }
@@ -938,7 +928,6 @@
 
     const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER);
     const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
-
     const program = gl.createProgram();
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
@@ -964,12 +953,8 @@
     ]);
 
     const indices = new Uint16Array([
-      0, 1, 2,   0, 2, 3,
-      4, 5, 6,   4, 6, 7,
-      8, 9, 10,   8, 10, 11,
-      12, 13, 14,   12, 14, 15,
-      16, 17, 18,   16, 18, 19,
-      20, 21, 22,   20, 22, 23,
+      0, 1, 2,   0, 2, 3,   4, 5, 6,   4, 6, 7,   8, 9, 10,   8, 10, 11,
+      12, 13, 14,   12, 14, 15,   16, 17, 18,   16, 18, 19,   20, 21, 22,   20, 22, 23,
     ]);
 
     const positionBuffer = gl.createBuffer();
@@ -996,9 +981,8 @@
     gl.enableVertexAttribArray(colorLoc);
 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-
     gl.enable(gl.DEPTH_TEST);
-    gl.clearColor(0.05, 0.05, 0.05, 1);
+    gl.clearColor(0, 0, 0, 0);
     gl.viewport(0, 0, canvas.width, canvas.height);
 
     const projectionLoc = gl.getUniformLocation(program, 'projection');
@@ -1008,12 +992,7 @@
     function perspective(fov, aspect, near, far) {
       const f = 1.0 / Math.tan(fov / 2);
       const nf = 1.0 / (near - far);
-      return [
-        f / aspect, 0, 0, 0,
-        0, f, 0, 0,
-        0, 0, (far + near) * nf, -1,
-        0, 0, (2 * far * near) * nf, 0
-      ];
+      return [f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, (2 * far * near) * nf, 0];
     }
 
     function identity() {
@@ -1036,32 +1015,17 @@
 
     function rotateX(angle) {
       const c = Math.cos(angle), s = Math.sin(angle);
-      return [
-        1, 0, 0, 0,
-        0, c, s, 0,
-        0, -s, c, 0,
-        0, 0, 0, 1
-      ];
+      return [1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1];
     }
 
     function rotateY(angle) {
       const c = Math.cos(angle), s = Math.sin(angle);
-      return [
-        c, 0, -s, 0,
-        0, 1, 0, 0,
-        s, 0, c, 0,
-        0, 0, 0, 1
-      ];
+      return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1];
     }
 
     function rotateZ(angle) {
       const c = Math.cos(angle), s = Math.sin(angle);
-      return [
-        c, s, 0, 0,
-        -s, c, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1
-      ];
+      return [c, s, 0, 0, -s, c, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
     }
 
     const projection = perspective(Math.PI / 4, 1, 0.1, 100);
@@ -1070,17 +1034,14 @@
     let angle = 0;
     function render() {
       angle += 0.01;
-      
       let model = identity();
       model = multiplyMatrices(model, rotateX(angle));
       model = multiplyMatrices(model, rotateY(angle));
       model = multiplyMatrices(model, rotateZ(angle));
-
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.uniformMatrix4fv(projectionLoc, false, projection);
       gl.uniformMatrix4fv(viewLoc, false, view);
       gl.uniformMatrix4fv(modelLoc, false, model);
-
       gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
       requestAnimationFrame(render);
     }
@@ -1088,6 +1049,9 @@
     render();
   };
 </script>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
