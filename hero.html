@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BRT - Creative Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="brt-logo-small"></div>
+
+<nav>
+  <a href="hero.html">Hero</a>
+  <a href="img.html">Gallery</a>
+  <a href="webgl.html">WebGL</a>
+  <a href="projects.html">Projects</a>
+  <a href="tweaking.html">Settings</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <div class="brt-logo"></div>
+    <div class="typewrite" data-period="2000" data-type="[]"></div>
+  </div>
+</section>
+
+<section id="img">
+  <div class="photos-container" id="photos-container"></div>
+</section>
+
+<section id="webgl">
+  <canvas id="webgl-container"></canvas>
+</section>
+
+<section id="projects">
+  <div id="typedtext"></div>
+</section>
+
+<section id="tweaking">
+  <div class="tweaking-content">
+    <div class="tweaking-section">
+      <h3 class="tweaking-title">Settings</h3>
+      <div class="tweaking-items">
+        <div class="tweaking-item"><div class="tweaking-label">Hero</div></div>
+        <div class="tweaking-item"><div class="tweaking-label">Gallery</div></div>
+        <div class="tweaking-item"><div class="tweaking-label">WebGL</div></div>
+        <div class="tweaking-item"><div class="tweaking-label">Projects</div></div>
+        <div class="tweaking-item"><div class="tweaking-label">Tweaking</div></div>
+      </div>
+    </div>
+
+    <div class="tweaking-divider"></div>
+
+    <div class="tweaking-section">
+      <h3 class="tweaking-title">Controls</h3>
+      <div class="tweaking-boxes">
+        <div class="tweaking-box"></div>
+        <div class="tweaking-box"></div>
+        <div class="tweaking-box"></div>
+        <div class="tweaking-box"></div>
+      </div>
+    </div>
+
+    <div class="tweaking-section">
+      <h3 class="tweaking-title">Status</h3>
+      <div class="tweaking-boxes">
+        <div class="tweaking-box tweaking-full-box"></div>
+        <div class="tweaking-box tweaking-full-box"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <a href="#hero">link</a>
+    <a href="#img">about</a>
+    <a href="#webgl">me</a>
+    <a href="#projects">contact</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <span class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</span>
+    <div class="lightbox-img-container">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+    <span class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</span>
+    <div class="lightbox-info" id="lightbox-info"></div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+//Copyright © 2025 Berat Korkmaz | Powered by BRTWorks
