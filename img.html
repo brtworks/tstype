@@ -11,14 +11,6 @@
 
 <div class="brt-logo-small"></div>
 
-<nav>
-  <a href="hero.html">Hero</a>
-  <a href="img.html">Gallery</a>
-  <a href="webgl.html">WebGL</a>
-  <a href="projects.html">Projects</a>
-  <a href="tweaking.html">Settings</a>
-</nav>
-
 <section id="hero">
   <div class="hero-background"></div>
   <div class="hero-content">
@@ -37,6 +29,7 @@
 
 <section id="projects">
   <div id="typedtext"></div>
+  <div id="webgl-animation" style="width: 300px; height: 300px;"></div>
 </section>
 
 <section id="tweaking">
@@ -97,6 +90,93 @@
 
 <script src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Function to fetch random words from a placeholder API
+async function fetchRandomWords() {
+  const response = await fetch('https://random-word-api.herokuapp.com/word?number=10');
+  const words = await response.json();
+  return words;
+}
+
+// Typewriting animation for typewrite and typedtext divs
+function typewriteAnimation(element, words, period) {
+  let currentWordIndex = 0;
+  let isDeleting = false;
+  let text = '';
+
+  function tick() {
+    const fullText = words[currentWordIndex];
+    text = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+    element.innerHTML = `<span class="wrap">${text}</span>`;
+
+    let delta = 200 - Math.random() * 100;
+    if (isDeleting) delta /= 2;
+
+    if (!isDeleting && text === fullText) {
+      delta = period;
+      isDeleting = true;
+    } else if (isDeleting && text === '') {
+      isDeleting = false;
+      currentWordIndex = (currentWordIndex + 1) % words.length;
+      delta = 500;
+    }
+
+    setTimeout(tick, delta);
+  }
+
+  tick();
+}
+
+// Ensure the span with class "wrap" is visible immediately on page load
+function ensureWrapVisible() {
+  const wrapElements = document.querySelectorAll('.wrap');
+  wrapElements.forEach((element) => {
+    element.style.visibility = 'visible';
+  });
+}
+
+// Call ensureWrapVisible on page load
+window.addEventListener('load', ensureWrapVisible);
+
+// Initialize typewriting animations
+fetchRandomWords().then((words) => {
+  const typewriteElement = document.querySelector('.typewrite');
+  const typedtextElement = document.querySelector('#typedtext');
+
+  typewriteAnimation(typewriteElement, words, 2000);
+  typewriteAnimation(typedtextElement, words, 2000);
+});
+
+// Placeholder for WebGL animation
+function initializeWebGLAnimation() {
+  const canvas = document.getElementById('webgl-animation');
+  const gl = canvas.getContext('webgl');
+
+  if (!gl) {
+    console.error('WebGL not supported');
+    return;
+  }
+
+  // Placeholder WebGL setup
+  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+
+  // Add fade-in effect on scroll
+  window.addEventListener('scroll', () => {
+    const rect = canvas.getBoundingClientRect();
+    const fadeInPoint = window.innerHeight / 1.5;
+    const fadeOutPoint = window.innerHeight / 3;
+
+    if (rect.top < fadeInPoint && rect.bottom > fadeOutPoint) {
+      canvas.style.opacity = 1;
+    } else {
+      canvas.style.opacity = 0;
+    }
+  });
+}
+
+initializeWebGLAnimation();
+</script>
 </body>
 </html>
 

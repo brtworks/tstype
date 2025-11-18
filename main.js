@@ -192,35 +192,6 @@ function loadUnsplashPhotos() {
     .catch(err => console.error(`[PHOTOS][code=${EXIT_CODES.FETCH_PHOTOS_FAIL}]`, err));
 }
 
-// Dots background
-function initDots() {
-  const spacing = 45;
-  let dots = [];
-  function createDots() {
-    const cols = Math.ceil(window.innerWidth / spacing);
-    const totalHeight = document.documentElement.scrollHeight;
-    const rows = Math.ceil(totalHeight / spacing);
-    for (let row = 0; row <= rows; row++) {
-      for (let col = 0; col <= cols; col++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        document.body.appendChild(dot);
-        const baseX = col * spacing;
-        const baseY = row * spacing;
-        dots.push({ element: dot, baseX, baseY });
-        dot.style.left = baseX + "px";
-        dot.style.top = baseY + "px";
-      }
-    }
-  }
-  createDots();
-  window.addEventListener('resize', () => {
-    dots.forEach(d => d.element.remove());
-    dots = [];
-    createDots();
-  });
-}
-
 // WebGL cube
 function initWebGL() {
   const canvas = document.getElementById('webgl-container');
@@ -362,7 +333,6 @@ function initWebGL() {
 
 // INIT
 window.onload = function() {
-  initDots();
   startProjectsTypewriter();
   loadUnsplashPhotos();
 
