@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BRT - Creative Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/schedule.html">Contact</a>
+  </nav>
+</header>
+
+<div class="brt-logo-small"></div>
+
+<section id="hero">
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <div class="brt-logo"></div>
+    <div class="typewrite"><span class="wrap">artist</span></div>
+  </div>
+</section>
+
+<section id="img">
+  <div class="photos-container" id="photos-container"></div>
+</section>
+
+<section id="webgl">
+  <canvas id="webgl-container"></canvas>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <a href="#">link</a>
+    <a href="#">about</a>
+    <a href="#">me</a>
+    <a href="contact.html">contact</a>
+  </div>
+</footer><a href="/tstype/contact.html">Contact</a>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <span class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</span>
+    <div class="lightbox-img-container">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+    <span class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</span>
+    <div class="lightbox-info" id="lightbox-info"></div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script src="bubble-ui.js"></script>
+<script>
+(function() {
+  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+})();
+
+function sendEmail() {
+  const tweakingBoxes = document.querySelectorAll(".tweaking-box");
+  const message = Array.from(tweakingBoxes)
+    .map((box, index) => `Box ${index + 1}: ${box.textContent.trim()}`)
+    .join("\n");
+
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    message: message,
+  })
+  .then(
+    () => alert("Email sent successfully!"),
+    (error) => alert("Failed to send email: " + error)
+  );
+}
+</script>
+</body>
+</html>
+
+//Copyright © 2025 Berat Korkmaz | Powered by BRTWorks
