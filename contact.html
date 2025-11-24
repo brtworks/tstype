@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact - BRT</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.mdc-text-field.mdc-theme--dark {
+  background-color: white !important;
+}
+.mdc-text-field__input {
+  color: black !important;
+}
+.mdc-floating-label {
+  color: black !important;
+}
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: black !important;
+}
+#contact-form {
+  margin-top: 24px;
+}
+</style>
+</head>
+<body>
+
+<div class="brt-logo-small" onclick="window.location.href='index.html'" style="cursor: pointer;"></div>
+
+<section id="contact">
+  <div class="container">
+    <h1>Contact Me</h1>
+    <p>Get in touch for collaborations, projects, or just to say hello!</p>
+    <form id="contact-form" action="https://formspree.io/f/mgvbkpyw" method="POST">
+      <div class="mdc-text-field mdc-text-field--outlined mdc-theme--dark" style="margin-bottom: 16px;">
+        <input type="text" class="mdc-text-field__input" id="name" name="name" required>
+        <div class="mdc-notched-outline">
+          <div class="mdc-notched-outline__leading"></div>
+          <div class="mdc-notched-outline__notch">
+            <label class="mdc-floating-label" for="name">Name</label>
+          </div>
+          <div class="mdc-notched-outline__trailing"></div>
+        </div>
+      </div>
+      <div class="mdc-text-field mdc-text-field--outlined mdc-theme--dark" style="margin-bottom: 16px;">
+        <input type="email" class="mdc-text-field__input" id="email" name="email" required>
+        <div class="mdc-notched-outline">
+          <div class="mdc-notched-outline__leading"></div>
+          <div class="mdc-notched-outline__notch">
+            <label class="mdc-floating-label" for="email">Email</label>
+          </div>
+          <div class="mdc-notched-outline__trailing"></div>
+        </div>
+      </div>
+      <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-theme--dark" style="margin-bottom: 16px;">
+        <textarea class="mdc-text-field__input" rows="5" id="message" name="message" required></textarea>
+        <div class="mdc-notched-outline">
+          <div class="mdc-notched-outline__leading"></div>
+          <div class="mdc-notched-outline__notch">
+            <label class="mdc-floating-label" for="message">Message</label>
+          </div>
+          <div class="mdc-notched-outline__trailing"></div>
+        </div>
+      </div>
+      <button class="mdc-button mdc-button--raised mdc-theme--dark" type="submit">
+        <span class="mdc-button__label">Send Message</span>
+      </button>
+    </form>
+    <div id="thank-you" style="display: none;">
+      Thank you for contacting Berat Korkmaz<br>
+      We will get back to you as soon as possible.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <a href="index.html">home</a>
+    <a href="#">about</a>
+    <a href="#">me</a>
+    <a href="#">contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.js"></script>
+<script src="bubble-ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const textFields = document.querySelectorAll('.mdc-text-field');
+  textFields.forEach(tf => {
+    mdc.textField.MDCTextField.attachTo(tf);
+  });
+  const buttons = document.querySelectorAll('.mdc-button');
+  buttons.forEach(btn => {
+    mdc.ripple.MDCRipple.attachTo(btn);
+  });
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      document.querySelector('h1').style.display = 'none';
+      document.querySelector('p').style.display = 'none';
+      form.style.display = 'none';
+      document.getElementById('thank-you').style.display = 'block';
+    } else {
+      alert('Failed to send message.');
+    }
+  }).catch(error => {
+    alert('Failed to send message.');
+  });
+});
+</script>
+</body>
+</html>
+
+//Copyright © 2025 Berat Korkmaz | Powered by BRTWorks

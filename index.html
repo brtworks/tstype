@@ -9,13 +9,19 @@
 </head>
 <body>
 
+<header>
+  <nav>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
 <div class="brt-logo-small"></div>
 
 <section id="hero">
   <div class="hero-background"></div>
   <div class="hero-content">
     <div class="brt-logo"></div>
-    <div class="typewrite" data-period="2000" data-type="[&quot;creator&quot;,&quot;innovator&quot;,&quot;visionary&quot;,&quot;builder&quot;,&quot;dreamer&quot;,&quot;explorer&quot;,&quot;artist&quot;]"><span class="wrap">artist</span></div>
+    <div class="typewrite"><span class="wrap">artist</span></div>
   </div>
 </section>
 
@@ -32,7 +38,7 @@
     <a href="#">link</a>
     <a href="#">about</a>
     <a href="#">me</a>
-    <a href="#">contact</a>
+    <a href="/contact.html">contact</a>
   </div>
 </footer>
 
@@ -53,56 +59,6 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
 <script src="bubble-ui.js"></script>
 <script>
-// Fetch random words from an alternative API and apply typewriting animation
-async function fetchRandomWords() {
-  try {
-    const response = await fetch('https://random-word-api.vercel.app/api?words=10');
-    const words = await response.json();
-    return words;
-  } catch (error) {
-    console.error('Failed to fetch random words:', error);
-    return ["fallback", "words", "random", "typing", "animation"];
-  }
-}
-
-// Typewriting animation for the typewrite div
-function typewriteAnimation(element, words) {
-  const period = parseInt(element.getAttribute('data-period'), 10) || 2000;
-  let currentWordIndex = 0;
-  let isDeleting = false;
-  let text = '';
-
-  function tick() {
-    const fullText = words[currentWordIndex];
-    text = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-    element.querySelector('.wrap').textContent = text;
-
-    let delta = 200 - Math.random() * 100;
-    if (isDeleting) delta /= 2;
-
-    if (!isDeleting && text === fullText) {
-      delta = period;
-      isDeleting = true;
-    } else if (isDeleting && text === '') {
-      isDeleting = false;
-      currentWordIndex = (currentWordIndex + 1) % words.length;
-      delta = 500;
-    }
-
-    setTimeout(tick, delta);
-  }
-
-  tick();
-}
-
-// Initialize the typewrite animation with random words
-const typewriteElement = document.querySelector('.typewrite');
-if (typewriteElement) {
-  fetchRandomWords().then((words) => {
-    typewriteAnimation(typewriteElement, words);
-  });
-}
-
 (function() {
   emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
 })();
